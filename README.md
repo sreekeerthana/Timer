@@ -31,4 +31,10 @@ npm install
 npm run storybook
 ```
 
+## 3 - Run the testcases
+
+```bash
+npm run test
+```
+
 

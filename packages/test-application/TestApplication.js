@@ -43,13 +43,13 @@ export default class TestApplication extends LitElement {
                                        name="timerval" 
                                        id="timerVal">
                     </textbox-component>
-                    <button-component @click=${this.createTimer} .btn="${this.btn}"></button-component>
+                    <button-component @click=${this.createTimer} .btn="${this.btn}" id="createTimerId"></button-component>
                     <div class="clearfix"></div>
                  </div>
                  <ul class="timer-div">
                    ${this.timerData.map(
       timer => html`
-                      <li> <clock-timer-component .timObj=${timer}></clock-timer-component></li>
+                      <li> <clock-timer-component .timObj=${timer} id="timerComponent"></clock-timer-component></li>
                                   `
     )}
                 </ul>
@@ -58,10 +58,10 @@ export default class TestApplication extends LitElement {
   }
 
   createTimer() {
-    const timerElement1 = this.shadowRoot.getElementById('timername');
-    this.timerName = timerElement1.serializedValue;
-    const timerElement = this.shadowRoot.getElementById('timerVal');
-    this.formValue = timerElement.serializedValue;
+   // const timerElement1 = this.shadowRoot.getElementById('timername');
+    this.timerName = this.shadowRoot.getElementById('timername').serializedValue;
+    //const timerElement = this.shadowRoot.getElementById('timerVal');
+    this.formValue = this.shadowRoot.getElementById('timerVal').serializedValue;
     if(!(this.formValue < 0)){
       this.timerObj = { timerName: this.timerName, timerValue: this.formValue };
       this.timerData.push(this.timerObj);

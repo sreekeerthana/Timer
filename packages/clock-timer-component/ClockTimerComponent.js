@@ -45,14 +45,14 @@ export default class ClockTimerComponent extends LitElement {
                     <div class="timer">${this.timerObj.hours}:${this.timerObj.minutes}:${this.timerObj.seconds}</div>
                     <div class="link">
                        <ul>
-                          <li><a @click=${this.deleteTimer}>delete</a></li>
+                          <li><a @click=${this.deleteTimer} class="deleteTimerCls">delete</a></li>
                               ${this.pauseBool === true ?
         html`
-                          <li><a @click=${this.pauseTimer}>pause</a></li>
+                          <li><a @click=${this.pauseTimer} class="pauseTimerCls">pause</a></li>
                             `: html``}
                               ${this.pauseBool === false ?
         html`
-                         <li><a @click=${this.resumeTimer}>resume</a></li>`
+                         <li><a @click=${this.resumeTimer} class="resumeTimerCls">resume</a></li>`
         : html``
       }
     
@@ -88,6 +88,7 @@ export default class ClockTimerComponent extends LitElement {
     if (this.timerValue < 0) {
       this.shadowRoot.getElementById('wraperId').style.background = "#e74c3c";
       this.pauseBool = '';
+      this.timerObj = {hours: '00', minutes: '00', seconds: '00'};
       return clearInterval(this.counter);
     }
     var h = Math.floor(this.timerValue / 3600),
